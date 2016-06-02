@@ -1,63 +1,39 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
     <title>MegaRoster</title>
-
   </head>
-  <style>
-    #heading {
-    }
-    li {
-      list-style: none;
-    }
-    #maindiv {
-      width:40%;
-      text-align:center;
-    }
-  </style>
   <body>
-    <div>
-      <form>
 
-        <div id="mainDiv">
-          <h1 id="heading">MegaRoster</h1>
-          <label for="studentName"></label>
-          <input type="text" name="studentName" placeholder="Enter a Student's Name" required>
-          <button type="submit">Add Student</button>
-        </div>
+      <div id="heading">
+        <form>
 
-        <div class="list">
+          <div id="maindiv">
+            <h1 id="heading">MegaRoster</h1>
+            <label for="studentName"></label>
+            <input type="text" name="studentName" placeholder="Enter a Student's Name"  required>
+            <button type="submit" id="nicerButton">Add Student</button>
+          </div>
 
-        </div>
+          <div id ="listDiv">
+            <ul class="list" >
 
-      </form>
-    </div>
+            </ul>
+          </div>
+
+        </form>
+      </div>
+
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
   </body>
-
-<script type="text/javascript">
-
-    var app = {
-
-        init: function() {
-          var x = document.querySelector('form');
-          x.onsubmit = this.addValueToList;
-        },
-
-        buildList: function(studentName) {// argument: takes in the object value name ex: listValues
-          var li = document.createElement('li');
-          li.innerHTML = studentName;
-          return li;
-        },
-
-        addValueToList: function(ev){
-          ev.preventDefault();
-          var things = document.querySelector('div.list');
-          var studentName = this.studentName.value;
-          things.appendChild(app.buildList(studentName));
-      }
-  };
-app.init();
-</script>
 </html>
