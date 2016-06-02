@@ -38,25 +38,26 @@
 
 <script type="text/javascript">
 
-(function() {
-  var buildList = function(studentName) {// argument: takes in the object value name ex: listValues
-    var li = document.createElement('li');
-    li.innerHTML = studentName;
-    return li;
+    var app = {
+
+        init: function() {
+          var x = document.querySelector('form');
+          x.onsubmit = this.addValueToList;
+        },
+
+        buildList: function(studentName) {// argument: takes in the object value name ex: listValues
+          var li = document.createElement('li');
+          li.innerHTML = studentName;
+          return li;
+        },
+
+        addValueToList: function(ev){
+          ev.preventDefault();
+          var things = document.querySelector('div.list');
+          var studentName = this.studentName.value;
+          things.appendChild(app.buildList(studentName));
+      }
   };
-
-    var addValueToList = function(ev){
-      ev.preventDefault();
-
-      var things = document.querySelector('div.list');
-      var studentName = this.studentName.value;
-      //studentName: this.studentName.value;
-      //things.innerHTML += buildList(studentName);
-      things.appendChild(buildList(studentName));
-      };
-
-      var x = document.querySelector('form');
-      x.onsubmit = addValueToList
-})();
+app.init();
 </script>
 </html>
