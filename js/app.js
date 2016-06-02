@@ -11,8 +11,6 @@ $(document).foundation();
           var li = document.createElement('li');
           var p = document.createElement('p');
           li.appendChild(p);
-
-        //  function deleteName(li) {this.li.parentNode.removeChild(this.li);}
           p.innerHTML += studentName + '<a onclick="promote()" class="prom" href="#">Promote</a><a onclick="deleteName(li)" class="liAlign" href="#">   Delete</a>';
           return li;
         },
@@ -21,7 +19,6 @@ $(document).foundation();
           ev.preventDefault();
           var studentName = this.studentName.value;
           var things = document.querySelector('.list');
-          //things.appendChild(app.buildList(studentName));
           things.insertBefore(app.buildList(studentName), things.childNodes[0]);
       }
   };
