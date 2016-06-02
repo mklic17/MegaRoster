@@ -2,20 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>MegaRoster</title>
 
   </head>
   <style>
     #heading {
-
-
+    }
+    li {
+      list-style: none;
     }
     #maindiv {
       width:40%;
       text-align:center;
-
     }
   </style>
   <body>
@@ -39,23 +38,25 @@
 
 <script type="text/javascript">
 
-  var addValueToList = function(ev){
-    ev.preventDefault();
+(function() {
+  var buildList = function(studentName) {// argument: takes in the object value name ex: listValues
+    var li = document.createElement('li');
+    li.innerHTML = studentName;
+    return li;
+  };
 
-    var things = document.querySelector('.list');
-    var studentName = this.studentName;
+    var addValueToList = function(ev){
+      ev.preventDefault();
 
-    things.innerHTML += ' \
-      <ul> \
-      <li> '  + studentName.value + ' </li> \
-      </ul>';
-    };
+      var things = document.querySelector('div.list');
+      var studentName = this.studentName.value;
+      //studentName: this.studentName.value;
+      //things.innerHTML += buildList(studentName);
+      things.appendChild(buildList(studentName));
+      };
 
-    var x = document.querySelector('form');
-    x.onsubmit = addValueToList
-
-
-
-
+      var x = document.querySelector('form');
+      x.onsubmit = addValueToList
+})();
 </script>
 </html>
