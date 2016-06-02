@@ -35,6 +35,9 @@ input[type=text] {
   background-color: #faffbd;
 
 }
+input[type=text]:focus{
+  background-color:#faffbd;
+}
 
 
 ul {

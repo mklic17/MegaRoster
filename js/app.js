@@ -11,7 +11,7 @@ $(document).foundation();
           var li = document.createElement('li');
           var p = document.createElement('p');
           li.appendChild(p);
-          p.innerHTML += studentName + '<a onclick="promote()" class="prom" href="#">Promote</a><a onclick="deleteName(li)" class="liAlign" href="#">   Delete</a>';
+          p.innerHTML += studentName + '<a onclick="promote()" class="prom" href="#">Promote</a><a onclick="deleteName(li)" class="liAlign" href="#">Delete</a>';
           return li;
         },
 
