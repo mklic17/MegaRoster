@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MegaRoster</title>
+
+  </head>
+  <style>
+    #heading {
+
+
+    }
+    #maindiv {
+      width:40%;
+      text-align:center;
+
+    }
+  </style>
+  <body>
+    <div>
+      <form>
+
+        <div id="mainDiv">
+          <h1 id="heading">MegaRoster</h1>
+          <label for="studentName"></label>
+          <input type="text" name="studentName" placeholder="Enter a Student's Name" required>
+          <button type="submit">Add Student</button>
+        </div>
+
+        <div class="list">
+
+        </div>
+
+      </form>
+    </div>
+  </body>
+
+<script type="text/javascript">
+
+  var addValueToList = function(ev){
+    ev.preventDefault();
+
+    var things = document.querySelector('.list');
+    var studentName = this.studentName;
+
+    things.innerHTML += ' \
+      <ul> \
+      <li> '  + studentName.value + ' </li> \
+      </ul>';
+    };
+
+    var x = document.querySelector('form');
+    x.onsubmit = addValueToList
+
+
+
+
+</script>
+</html>
