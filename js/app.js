@@ -58,9 +58,12 @@ $(document).foundation();
             text:'+1',
             css:'MoveUp',
             handler: function() {
-              var things = li.parentNode;
-              var temp = li.previousSibling;
-              things.insertBefore(li, temp);
+              if(li.previousSibling !== null){
+                var things = li.parentNode;
+                var temp = li.previousSibling;
+                things.insertBefore(li, temp);
+              }
+
             }
 
           });
@@ -68,19 +71,23 @@ $(document).foundation();
             text: '-1',
             css: 'MoveUp',
             handler: function() {
+              //debugger;
+
               var things = li.parentNode;
               var temp = li.nextSibling;
               things.insertBefore(temp, li);
-
+              // It works but I still get an error, add an if statement
+              
             }
           });
 
           li.innerText = studentName;
           li.appendChild(topLink);
-          li.appendChild(removeLink);
-          li.appendChild(promoteLink);
           li.appendChild(upOne);
           li.appendChild(downOne);
+          li.appendChild(removeLink);
+          li.appendChild(promoteLink);
+
 
           return li;
         },
