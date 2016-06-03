@@ -28,6 +28,9 @@
 body {
   background-color:#D3D3D3;
 }
+a {
+  text-decoration: none; /* no underline */
+}
 input[type=text] {
   width:450px;
   margin-left: auto;
@@ -62,9 +65,21 @@ li{
   text-decoration: underline;
   float:right;
   padding-right:5px;
+  color: red;
 }
 .prom{
+  color: blue;
   float:right;
   padding-right:5px;
   text-decoration: underline;
+}
+.TopOfList{
+  color: orange;
+  float:right;
+  padding-right:5px;
+}
+.MoveUp {
+  float:right;
+  color: purple;
+  padding-right: 5px;
 }
