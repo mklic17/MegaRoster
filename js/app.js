@@ -27,6 +27,7 @@ $(document).foundation();
       },
 
         buildList: function(studentName) {
+          var bool = true;
           var li = document.createElement('li');
           var removeLink = this.buildLinkItem({
             text: 'Remove',
@@ -40,8 +41,17 @@ $(document).foundation();
             text: 'Promote',
             css: 'prom',
             handler: function(){
-              li.style.backgroundColor = '#ADD8E6';
+              debugger;
+              if(bool === true){
+                li.style.backgroundColor = '#ADD8E6';
+                bool = false;
+              }
+              else {
+                bool = true;
+                li.style.backgroundColor = '#faffbd';
+              }
             },
+
           });
           var topLink = this.buildLinkItem({
             text: 'Top',
@@ -77,7 +87,7 @@ $(document).foundation();
               var temp = li.nextSibling;
               things.insertBefore(temp, li);
               // It works but I still get an error, add an if statement
-              
+
             }
           });
 
