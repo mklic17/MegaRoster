@@ -46,40 +46,26 @@ input[type=text]:focus{
 ul {
   list-style: none;
   visibility:hidden;
-  width:450px;
-  height:30px;width:500px;
+  /*width:450px;*/
+  height:30px;
+  width:500px;
   margin-left: auto;
   margin-right: auto;
-  border:5px solid;
+  padding-top: 10px;
 }
 
 li{
   visibility: visible;
   background-color:#faffbd;
-  height:35px;
+  height:42px;
   padding-left: 10px;
   border:1px solid black;
   font-size:1.2em;
+  width:500px;
+  float: right;
 }
 .liAlign{
-  text-decoration: underline;
-  float:right;
-  padding-right:5px;
-  color: red;
-}
-.prom{
-  color: blue;
-  float:right;
-  padding-right:5px;
-  text-decoration: underline;
-}
-.TopOfList{
-  color: orange;
-  float:right;
-  padding-right:5px;
-}
-.MoveUp {
-  float:right;
-  color: purple;
-  padding-right: 5px;
+  float: right;
+  /*padding-right:5px;
+  color: white;*/
 }

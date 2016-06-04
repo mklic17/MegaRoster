@@ -30,16 +30,16 @@ $(document).foundation();
           var bool = true;
           var li = document.createElement('li');
           var removeLink = this.buildLinkItem({
-            text: 'Remove',
-            css: 'liAlign',
+            content: '<i class="fa fa-times"></i>',
+            css: 'liAlign alert button',
             handler: function(){
               li.remove();
             },
           });
 
           var promoteLink = this.buildLinkItem({
-            text: 'Promote',
-            css: 'prom',
+            content: '<i class="fa fa-bomb"></i>',
+            css: 'liAlign success button',
             handler: function(){
               debugger;
               if(bool === true){
@@ -54,8 +54,8 @@ $(document).foundation();
 
           });
           var topLink = this.buildLinkItem({
-            text: 'Top',
-            css: 'TopOfList',
+            content: '<i class="fa fa-arrow-circle-up"></i>',
+            css: 'liAlign button',
             handler: function(){
               //debugger;
               var things = li.parentNode;
@@ -65,8 +65,8 @@ $(document).foundation();
           });
 
           var upOne = this.buildLinkItem({
-            text:'+1',
-            css:'MoveUp',
+            content:'<i class="fa fa-arrow-up"></i>',
+            css:'liAlign warning button',
             handler: function() {
               if(li.previousSibling !== null){
                 var things = li.parentNode;
@@ -78,8 +78,8 @@ $(document).foundation();
 
           });
           var downOne = this.buildLinkItem({
-            text: '-1',
-            css: 'MoveUp',
+            content: '<i class="fa fa-arrow-down"></i>',
+            css: 'liAlign secondary button',
             handler: function() {
               //debugger;
 
@@ -104,7 +104,7 @@ $(document).foundation();
         buildLinkItem: function(options) {
           var a = document.createElement('a');
           a.href = '#';
-          a.innerText = options.text;
+          a.innerHTML = options.content;
           a.onclick = options.handler;
           a.className = options.css;
           return a;
