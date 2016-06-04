@@ -53,7 +53,9 @@ ul {
   margin-right: auto;
   padding-top: 10px;
 }
-
+#countofList{
+  text-align: center;
+}
 li{
   visibility: visible;
   background-color:#faffbd;

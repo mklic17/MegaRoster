@@ -21,7 +21,8 @@ $(document).foundation();
           //things.insertBefore(listItem, things.childNodes[0]);
           var things = document.querySelector('#ulList');
           this.prependChild(things, listItem);
-          this.count += 1;
+          //this.count += 1;
+          MegaRoster.addOne();
           f.reset();
           f.studentName.focus()
       },
@@ -34,7 +35,10 @@ $(document).foundation();
             css: 'liAlign alert button',
             handler: function(){
               li.remove();
+              MegaRoster.subtractOne();
+
             },
+
           });
 
           var promoteLink = this.buildLinkItem({
@@ -55,7 +59,7 @@ $(document).foundation();
           });
           var topLink = this.buildLinkItem({
             content: '<i class="fa fa-arrow-circle-up"></i>',
-            css: 'liAlign button',
+            css: 'liAlign promote button',
             handler: function(){
               //debugger;
               var things = li.parentNode;
@@ -113,6 +117,19 @@ $(document).foundation();
         prependChild: function (parent, child){
           parent.insertBefore(child, parent.firstChild);
         },
+
+        addOne: function (count) {
+          this.count+= 1;
+          var p = document.querySelector('#countofList');
+          p.innerText = 'count: ' + this.count;
+        },
+        subtractOne: function(count){
+          this.count -= 1;
+          var p = document.querySelector('#countofList');
+          p.innerText = 'count: ' + this.count;
+        },
+
+
   };
 
 MegaRoster.init();
