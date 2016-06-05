@@ -4,24 +4,23 @@ $(document).foundation();
 
         init: function() {
           this.setupEventListeners();
-          this.count = 0;
+          this.count = localStorage.length;
         },
 
-        setupEventListeners: function(ev) {
+        setupEventListeners: function(event) {
           var x = document.querySelector('form');
           x.onsubmit = this.addValueToList.bind(this);
         },
 
         addValueToList: function(ev){
           ev.preventDefault();
-          //debugger;
           var f =ev.currentTarget; //the thing that you are listening to the event on
           var studentName = f.studentName.value;
           var listItem = this.buildList(studentName);
           //things.insertBefore(listItem, things.childNodes[0]);
           var things = document.querySelector('#ulList');
           this.prependChild(things, listItem);
-          //this.count += 1;
+          localStorage.setItem(this.count, studentName);
           MegaRoster.addOne();
           f.reset();
           f.studentName.focus()
@@ -41,9 +40,7 @@ $(document).foundation();
             handler: function(){
               li.remove();
               MegaRoster.subtractOne();
-
             },
-
           });
 
           var promoteLink = this.buildLinkItem({
@@ -59,8 +56,8 @@ $(document).foundation();
                 li.style.backgroundColor = '#faffbd';
               }
             },
-
           });
+
           var topLink = this.buildLinkItem({
             content: '<i class="fa fa-arrow-circle-up"></i>',
             css: 'liAlign promote button',
@@ -68,7 +65,6 @@ $(document).foundation();
               //debugger;
               var things = li.parentNode;
               MegaRoster.prependChild(things, li);
-
             },
           });
 
@@ -81,33 +77,27 @@ $(document).foundation();
                 var temp = li.previousSibling;
                 things.insertBefore(li, temp);
               }
-
             },
-
           });
+
           var downOne = this.buildLinkItem({
             content: '<i class="fa fa-arrow-down"></i>',
             css: 'liAlign secondary button',
             handler: function() {
-              //debugger;
-
               var things = li.parentNode;
               var temp = li.nextSibling;
               things.insertBefore(temp, li);
               // It works but I still get an error, add an if statement
-
           },
         });
+
           var edit = this.buildLinkItem({
             content: '<i class = "fa fa-pencil"></i>',
             css: 'edit liAlign success hollow button',
             handler: function() {
               this.toggleEditable(li.querySelector('span.studentName'));
             }.bind(this)
-
           });
-
-
 
           span.appendChild(topLink);
           span.appendChild(upOne);
@@ -118,6 +108,7 @@ $(document).foundation();
           li.appendChild(span);
           return li;
         },
+
         buildLinkItem: function(options) {
           var a = document.createElement('a');
           a.href = '#';
@@ -136,6 +127,7 @@ $(document).foundation();
           var p = document.querySelector('#countofList');
           p.innerText = 'Count: ' + this.count;
         },
+
         subtractOne: function(count){
           this.count -= 1;
           var p = document.querySelector('#countofList');
@@ -156,7 +148,18 @@ $(document).foundation();
        },
 
 
-
+       localStg: function () {
+         var length = localStorage.length;
+         if (localStorage.length !== 0){
+           for (var i = 0; i < length; i++){
+             var check = localStorage.getItem(localStorage.key(i))
+             var oldLi = this.buildList(check);
+             var things = document.querySelector('#ulList');
+             this.prependChild(things, oldLi);
+           }
+         }
+         MegaRoster.init();
+       },
   };
 
-MegaRoster.init();
+MegaRoster.localStg();
