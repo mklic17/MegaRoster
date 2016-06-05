@@ -30,6 +30,11 @@ $(document).foundation();
         buildList: function(studentName) {
           var bool = true;
           var li = document.createElement('li');
+          var span = document.createElement('span');
+          span.innerText = studentName;
+          span.className = 'studentName';
+          li.appendChild(span);
+
           var removeLink = this.buildLinkItem({
             content: '<i class="fa fa-times"></i>',
             css: 'liAlign alert button',
@@ -45,7 +50,6 @@ $(document).foundation();
             content: '<i class="fa fa-bomb"></i>',
             css: 'liAlign success button',
             handler: function(){
-              debugger;
               if(bool === true){
                 li.style.backgroundColor = '#ADD8E6';
                 bool = false;
@@ -78,7 +82,7 @@ $(document).foundation();
                 things.insertBefore(li, temp);
               }
 
-            }
+            },
 
           });
           var downOne = this.buildLinkItem({
@@ -92,17 +96,26 @@ $(document).foundation();
               things.insertBefore(temp, li);
               // It works but I still get an error, add an if statement
 
-            }
+          },
+        });
+          var edit = this.buildLinkItem({
+            content: '<i class = "fa fa-pencil"></i>',
+            css: 'edit liAlign success hollow button',
+            handler: function() {
+              this.toggleEditable(li.querySelector('span.studentName'));
+            }.bind(this)
+
           });
 
-          li.innerText = studentName;
-          li.appendChild(topLink);
-          li.appendChild(upOne);
-          li.appendChild(downOne);
-          li.appendChild(removeLink);
-          li.appendChild(promoteLink);
 
 
+          span.appendChild(topLink);
+          span.appendChild(upOne);
+          span.appendChild(downOne);
+          span.appendChild(removeLink);
+          span.appendChild(promoteLink);
+          span.appendChild(edit);
+          li.appendChild(span);
           return li;
         },
         buildLinkItem: function(options) {
@@ -121,13 +134,27 @@ $(document).foundation();
         addOne: function (count) {
           this.count+= 1;
           var p = document.querySelector('#countofList');
-          p.innerText = 'count: ' + this.count;
+          p.innerText = 'Count: ' + this.count;
         },
         subtractOne: function(count){
           this.count -= 1;
           var p = document.querySelector('#countofList');
-          p.innerText = 'count: ' + this.count;
+          p.innerText = 'Count: ' + this.count;
         },
+
+        toggleEditable: function(el) {
+         var toggleElement = el.parentElement.querySelector('a.edit');
+         if (el.contentEditable === 'true') {
+           el.contentEditable = 'false';
+           toggleElement.innerHTML = '<i class = "fa fa-pencil"></i>';
+         }
+         else {
+           el.contentEditable = 'true';
+           el.focus();
+           toggleElement.innerHTML = '<i class = "fa fa-floppy-o"></i>"';
+         }
+       },
+
 
 
   };
