@@ -157,6 +157,28 @@ $(document).foundation();
          }
        },
 
+      //  loadServerData: function(el){
+      //      var y = document.querySelector('#loadServer'); // added this
+      //      $.ajax({
+      //        url: "https://mutant-school.herokuapp.com/api/v1/mutants",
+      //        type: "GET",
+      //      })
+      //      .done(function(data, textStatus, jqXHR) {
+      //        //search for a specific identifier using ajax
+      //        //for each item this.buildListItem(mutantName)
+      //          // var m = mutantname
+      //          //this.prependchild(specific identifier, mutantName)
+      //          //$.each(data, function(i, mutant) {
+      //          //
+      //
+      //        // done
+      //        // $('loadServer').prependchild(.this.buildListItem(.each(mutant_name)));
+      //        //
+      //      })
+      //      .fail(function(jqXHR, textStatus, errorThrown) {
+      //        console.log("HTTP Request Failed");
+      //      })
+      //    },
 
        localStg: function () {
 
@@ -173,6 +195,8 @@ $(document).foundation();
 
          MegaRoster.init();
        },
+
+
 
   };
 

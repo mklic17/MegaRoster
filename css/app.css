@@ -75,3 +75,9 @@ li{
   /*padding-right:5px;
   color: white;*/
 }
+
+#loadServer {
+  padding: 10px 0px 10px 20px;
+  font-size: .7em;
+  
+}
