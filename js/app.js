@@ -15,12 +15,18 @@ $(document).foundation();
         addValueToList: function(ev){
           ev.preventDefault();
           var f =ev.currentTarget; //the thing that you are listening to the event on
+
           var studentName = f.studentName.value;
           var listItem = this.buildList(studentName);
 
           var things = document.querySelector('#ulList');
           this.prependChild(things, listItem);
-          localStorage.setItem('item #' + this.count, studentName);
+          var obj = {
+            name: studentName,
+            promote: 'false'
+          };
+
+          localStorage.setItem(this.count, JSON.stringify(obj));
           MegaRoster.addOne();
           f.reset();
           f.studentName.focus()
@@ -38,13 +44,16 @@ $(document).foundation();
             content: '<i class="fa fa-times"></i>',
             css: 'liAlign alert button',
             handler: function(){
+              debugger;
               li.remove();
               MegaRoster.subtractOne();
-              removeSpecificLS()
+              var x = MegaRoster.count;
+              localStorage.removeItem(x); // you need a better count this just removes the last
+
             },
           });
 
-          var promoteLink = this.buildLinkItem({
+          var favoriteLink = this.buildLinkItem({
             content: '<i class="fa fa-bomb"></i>',
             css: 'liAlign success button',
             handler: function(){
@@ -104,7 +113,7 @@ $(document).foundation();
           span.appendChild(upOne);
           span.appendChild(downOne);
           span.appendChild(removeLink);
-          span.appendChild(promoteLink);
+          span.appendChild(favoriteLink);
           span.appendChild(edit);
           li.appendChild(span);
           return li;
@@ -150,21 +159,21 @@ $(document).foundation();
 
 
        localStg: function () {
+
          var length = localStorage.length;
-         if (localStorage.length !== 0){
+         if (length !== 0){
            for (var i = 0; i < length; i++){
              var check = localStorage.getItem(localStorage.key(i))
-             var oldLi = this.buildList(check);
+             var newItem = JSON.parse(check)
+             var oldLi = this.buildList(newItem.name);
              var things = document.querySelector('#ulList');
              this.prependChild(things, oldLi);
            }
          }
 
-      // removeSpecificLS: function (specificCount) {
-      //
-      // }
          MegaRoster.init();
        },
+
   };
 
 MegaRoster.localStg();
