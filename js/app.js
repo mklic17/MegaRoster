@@ -17,10 +17,10 @@ $(document).foundation();
           var f =ev.currentTarget; //the thing that you are listening to the event on
           var studentName = f.studentName.value;
           var listItem = this.buildList(studentName);
-          //things.insertBefore(listItem, things.childNodes[0]);
+
           var things = document.querySelector('#ulList');
           this.prependChild(things, listItem);
-          localStorage.setItem(this.count, studentName);
+          localStorage.setItem('item #' + this.count, studentName);
           MegaRoster.addOne();
           f.reset();
           f.studentName.focus()
@@ -31,7 +31,7 @@ $(document).foundation();
           var li = document.createElement('li');
           var span = document.createElement('span');
           span.innerText = studentName;
-          span.className = 'studentName';
+          span.className = 'studentName ' + 'item #' +this.count;
           li.appendChild(span);
 
           var removeLink = this.buildLinkItem({
@@ -40,6 +40,7 @@ $(document).foundation();
             handler: function(){
               li.remove();
               MegaRoster.subtractOne();
+              removeSpecificLS()
             },
           });
 
@@ -93,7 +94,7 @@ $(document).foundation();
 
           var edit = this.buildLinkItem({
             content: '<i class = "fa fa-pencil"></i>',
-            css: 'edit liAlign success hollow button',
+            css: 'edit liAlign success hollow button edit',
             handler: function() {
               this.toggleEditable(li.querySelector('span.studentName'));
             }.bind(this)
@@ -158,6 +159,10 @@ $(document).foundation();
              this.prependChild(things, oldLi);
            }
          }
+
+      // removeSpecificLS: function (specificCount) {
+      //
+      // }
          MegaRoster.init();
        },
   };

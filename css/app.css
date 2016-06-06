@@ -57,9 +57,9 @@ ul {
   text-align: center;
 }
 .edit {
-
-
+  background-color: none;
 }
+
 li{
   visibility: visible;
   background-color:#faffbd;
